@@ -14,10 +14,13 @@ app.use(bodyParser.json())
 
 
 app.use(express.static('public'))
+
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/views/index.html')
 });
-
+/**
+* Api r
+*/
 
 // Not found middleware
 app.use((req, res, next) => {
