@@ -1,11 +1,16 @@
 const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
+const mongoose = require('mongoose');
 
 const cors = require('cors')
 
-const mongoose = require('mongoose')
-mongoose.connect(process.env.MLAB_URI || 'mongodb://localhost/exercise-track' )
+mongoose.connect(process.env.MLAB_URI || 'mongodb://localhost/exercise-track',  { useCreateIndex: true, useNewUrlParser: true });
+const connection = mongoose.connection;
+connection.on('error', (err) => console.log(err));
+connection.once('open', () => {
+  console.log('MongoDB connection establishes successfully.');
+});
 
 app.use(cors())
 
@@ -19,8 +24,10 @@ app.get('/', (req, res) => {
   res.sendFile(__dirname + '/views/index.html')
 });
 /**
-* Api r
+* Api routing
 */
+const exerciseRoutes = require('./routes/exercisesRoute');
+app.use('/api/exercise', exerciseRoutes);
 
 // Not found middleware
 app.use((req, res, next) => {
