@@ -31,7 +31,7 @@ router.route('/new-user').post((req, res) => {
  * Exercise Routes
  */
 // Get all exercises
-router.route('/log', (req, res) => {
+router.route('/logExercises').get((req, res) => {
   Exercise.find()
     .exec((err, exercises) => {
       if (err) { res.status(400).json({ message: err.message }) }
