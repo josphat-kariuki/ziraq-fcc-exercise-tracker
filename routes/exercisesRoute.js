@@ -39,17 +39,18 @@ router.route('/log', (req, res) => {
     })
 });
 // POST /api/exercise/add
-router.route('/add').post(async (req, res) => {
-  // params
+router.route('/add').post((req, res) => {
+   // params
   const userId = req.body.userId;
   const description = req.body.description;
   const duration = Number(req.body.duration);
   const date = Date.parse(req.body.date);
+  
   if (!userId) {
     res.status(400).json({ message: 'A user must exist' })
   } else {
-    const user = await User.findById(userId);
-    const newExercise = new Exercise({
+    const user =  User.findById(userId).exec(() => {
+      const newExercise = new Exercise({
       description: description,
       duration: duration,
       date: date,
@@ -58,6 +59,7 @@ router.route('/add').post(async (req, res) => {
     newExercise.save((err, newExer) => {
       if (err) { res.status(400).json({ message: err.message }) }
       res.json('Exercise Added Successfully.');
+    });      
     });
   }
 });
