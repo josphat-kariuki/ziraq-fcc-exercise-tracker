@@ -18,7 +18,7 @@ router.route('/user_log').get((req, res) => {
     });
 });
 // POST /api/exercise/new_user
-router.route('/new_user').post((req, res) => {
+router.route('/new-user').post((req, res) => {
   const { username } = req.body;
   const newUser = new User({
     username

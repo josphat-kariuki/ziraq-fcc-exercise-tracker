@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 
 const cors = require('cors')
 
-mongoose.connect(process.env.MLAB_URI || 'mongodb://localhost/exercise-track',  { useCreateIndex: true, useNewUrlParser: true });
+mongoose.connect(process.env.MONGOURL || 'mongodb://localhost/exercise-track',  { useCreateIndex: true, useNewUrlParser: true });
 const connection = mongoose.connection;
 connection.on('error', (err) => console.log(err));
 connection.once('open', () => {
