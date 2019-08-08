@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 
 const cors = require('cors')
 
-const mongoUrl = process.env.MONGO_URI/* || 'mongodb://localhost/exercise-track'*/;
+const mongoUrl = /*process.env.MONGO_URI*/ 'mongodb+srv://ziraq-young:489MONGO4l0@cluster0-66bd8.gcp.mongodb.net/test?retryWrites=true&w=majority';
 
 
 app.use(cors());
