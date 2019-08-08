@@ -5,7 +5,16 @@ const mongoose = require('mongoose');
 
 const cors = require('cors')
 
-mongoose.connect(process.env.MONGOURL || 'mongodb://localhost/exercise-track',  { useCreateIndex: true, useNewUrlParser: true });
+const mongoUrl = process.env.MONGO_URI || 'mongodb://localhost/exercise-track';
+
+// mongoose.connect(process.env.MONGOURL || 'mongodb://localhost/exercise-track',  { useCreateIndex: true, useNewUrlParser: true });
+// const connection = mongoose.connection;
+// connection.on('error', (err) => console.log(err));
+// connection.once('open', () => {
+//   console.log('MongoDB connection establishes successfully.');
+// });
+
+mongoose.connect(mongoUrl, { useCreateIndex: true, useNewUrlParser: true });
 const connection = mongoose.connection;
 connection.on('error', (err) => console.log(err));
 connection.once('open', () => {
