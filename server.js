@@ -5,7 +5,14 @@ const mongoose = require('mongoose');
 
 const cors = require('cors')
 
-const mongoUrl = process.env.MONGO_URI || 'mongodb://localhost/exercise-track';
+const mongoUrl = process.env.MONGO_URI/* || 'mongodb://localhost/exercise-track'*/;
+
+
+app.use(cors());
+
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
+require('dotenv').config();
 
 // mongoose.connect(process.env.MONGOURL || 'mongodb://localhost/exercise-track',  { useCreateIndex: true, useNewUrlParser: true });
 // const connection = mongoose.connection;
@@ -20,11 +27,6 @@ connection.on('error', (err) => console.log(err));
 connection.once('open', () => {
   console.log('MongoDB connection establishes successfully.');
 });
-
-app.use(cors());
-
-app.use(bodyParser.urlencoded({extended: false}));
-app.use(bodyParser.json());
 
 
 app.use(express.static('public'))
