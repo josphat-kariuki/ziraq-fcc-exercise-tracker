@@ -51,8 +51,10 @@ router.route('/add').post( (req, res) => {
     return res.status(400).json({ message: 'A user must exist' })
   } 
   
-  const savedUserId =  User.findById(userId).id;
-    return console.log(savedUserId);
+  User.findById(userId, function(err, doc) {
+    if(err) res.status(400).json({ error: 'User cant be loaded' })
+    console.log( doc.id )
+  })
     // const newExercise = new Exercise({
     //   description: description,
     //   duration: duration,
