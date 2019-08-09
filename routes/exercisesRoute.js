@@ -40,7 +40,7 @@ router.route('/logExercises').get((req, res) => {
     })
 });
 // POST /api/exercise/add
-router.route('/add').post((req, res) => {
+router.route('/add').post( (req, res) => {
    // params
   const userId = req.body.userId;
   const description = req.body.description;
@@ -48,21 +48,26 @@ router.route('/add').post((req, res) => {
   const date = Date.parse(req.body.date);
   
   if (!userId) {
-    res.status(400).json({ message: 'A user must exist' })
-  } else {
-    const user =  User.findById(userId).exec(() => {
-      const newExercise = new Exercise({
-      description: description,
-      duration: duration,
-      date: date,
-      userId: user._id
-    });
-    newExercise.save((err, newExer) => {
-      if (err) { res.status(400).json({ message: err.message }) }
-      res.json('Exercise Added Successfully.');
-    });      
-    });
-  }
+    return res.status(400).json({ message: 'A user must exist' })
+  } 
+  
+  const savedUserId =  User.findById(userId).id;
+    return console.log(savedUserId);
+    // const newExercise = new Exercise({
+    //   description: description,
+    //   duration: duration,
+    //   date: date,
+    //   userId: user.id
+    // });
+
+    // alert( newExercise );
+  // newExercise.save((err, newExer) => {
+  //   if (err) { res.status(400).json({ message: err.message }) }
+  //   res.json('Exercise Added Successfully.');
+  // });  
+    
+  
+  
 });
 // api/exercise/log?userId=12456&from=DATE&to=DATE&limit=10
 router.route('/log').get((req, res) => {
