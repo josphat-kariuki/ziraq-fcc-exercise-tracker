@@ -3,6 +3,7 @@ dependencies:
   cors: 2.8.5
   dotenv: 8.0.0
   express: 4.17.1
+  mongodb: 3.2.7
   mongoose: 5.6.9
   shortid: 2.2.14
 packages:
@@ -585,5 +586,6 @@ specifiers:
   cors: ^2.8.5
   dotenv: ^8.0.0
   express: ^4.14.0
+  mongodb: ^3.2.7
   mongoose: ^5.6.9
   shortid: ^2.2.14

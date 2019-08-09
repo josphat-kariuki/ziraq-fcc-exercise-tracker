@@ -53,7 +53,7 @@ router.route('/add').post( (req, res) => {
   
   User.findById(userId, function(err, doc) {
     if(err) res.status(400).json({ error: 'User cant be loaded' })
-    console.log( doc.id )
+    res.json({ id: doc.id })
   })
     // const newExercise = new Exercise({
     //   description: description,

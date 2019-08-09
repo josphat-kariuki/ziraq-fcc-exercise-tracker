@@ -14,19 +14,13 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 require('dotenv').config();
 
-// mongoose.connect(process.env.MONGOURL || 'mongodb://localhost/exercise-track',  { useCreateIndex: true, useNewUrlParser: true });
-// const connection = mongoose.connection;
-// connection.on('error', (err) => console.log(err));
-// connection.once('open', () => {
-//   console.log('MongoDB connection establishes successfully.');
-// });
-
-mongoose.connect(mongoUrl, { useCreateIndex: true, useNewUrlParser: true });
+mongoose.connect(process.env.MONGOURL || 'mongodb://localhost/exercise-track',  { useCreateIndex: true, useNewUrlParser: true });
 const connection = mongoose.connection;
 connection.on('error', (err) => console.log(err));
 connection.once('open', () => {
   console.log('MongoDB connection establishes successfully.');
 });
+
 
 
 app.use(express.static('public'))
