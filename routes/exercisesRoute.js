@@ -53,21 +53,25 @@ router.route('/add').post( (req, res) => {
   
   User.findById(userId, function(err, doc) {
     if(err) res.status(400).json({ error: 'User cant be loaded' })
-    res.json({ id: doc.id })
+    // res.json({ id: doc._id });
+  
+    const newExercise = new Exercise({
+      description: description,
+      duration: duration,
+      date: date,
+      userId: doc._id
+    });
+    
+    newExercise.save((err, newExer) => {
+      if (err) { res.status(400).json({ message: err.message }) }
+      res.json('Exercise Added Successfully.');
+    });  
+    
   })
-    // const newExercise = new Exercise({
-    //   description: description,
-    //   duration: duration,
-    //   date: date,
-    //   userId: user.id
-    // });
+    
 
     // alert( newExercise );
-  // newExercise.save((err, newExer) => {
-  //   if (err) { res.status(400).json({ message: err.message }) }
-  //   res.json('Exercise Added Successfully.');
-  // });  
-    
+  
   
   
 });
