@@ -67,12 +67,7 @@ router.route('/add').post( (req, res) => {
       res.json('Exercise Added Successfully.');
     });  
     
-  })
-    
-
-    // alert( newExercise );
-  
-  
+  });
   
 });
 // api/exercise/log?userId=12456&from=DATE&to=DATE&limit=10

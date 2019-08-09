@@ -22,8 +22,11 @@ h1 {
 p {
   max-width: 900px;
 }
+.extra {
+  margin-right: 0;
+}
 
-form {
+form, .extra {
   margin-bottom: 25px;
   padding: 15px;
   background-color: #87D37C;
@@ -33,7 +36,8 @@ form {
   border-radius: 5px;
 }
 
-input {
+
+.extra a, input {
   display: block;
   margin-bottom: 10px;
   padding: 5px;
