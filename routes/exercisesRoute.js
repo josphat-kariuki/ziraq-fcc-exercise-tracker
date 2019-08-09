@@ -29,8 +29,9 @@ router.route('/new-user').post( (req, res) => {
 });
 /**
  * Exercise Routes
- */
+ */ 
 // Get all exercises
+// api/exercise/logExercises
 router.route('/logExercises').get((req, res) => {
   Exercise.find()
     .exec((err, exercises) => {
